@@ -73,19 +73,19 @@ public class FrmGraphique extends JFrame{
 
                 ////////Graph 2////////////////////////////////////////////////////////////////////////////////
                 DefaultPieDataset dataset = new DefaultPieDataset( );
-                int pourFemme;
+                Double pourFemme;
                 Double pourHomme;
                 for (Integer valeur : ctrlGraphique.GetPourcSexe().keySet())
                 {
                     pourHomme = ctrlGraphique.GetPourcSexe().get(valeur);
-                    pourFemme = valeur;
+                    pourFemme = Double.valueOf(valeur);
 
-                    dataset.setValue(pourHomme,pourFemme);
+                    dataset.setValue(pourFemme,pourHomme);
                 }
                 chart1 = ChartFactory.createRingChart("Pourcentage de homme et femme", dataset, true, false, false);
                 RingPlot plot = (RingPlot) chart1.getPlot();
                 plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{1}"));
-               // plot.setSectionDepth(0.5);
+                plot.setSectionDepth(0.5);
                 ChartPanel graph2 = new ChartPanel(chart1);
                 pnlGraph2.add(graph2);
                 pnlGraph2.validate();
